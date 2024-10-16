@@ -1,2 +1,11 @@
-# ricchisnc_frontend
-Ricchi S.N.C. Frontend
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Start the project
+
+```bash
+npm start
+```

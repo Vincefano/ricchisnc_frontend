@@ -1,0 +1,16 @@
+{
+  "translation": {
+    "pages": {
+      "notFound": {
+        "title": "Pagina non trovata",
+        "description": "La pagina corrente non esiste, cambia pagina o torna alla home.",
+        "backToHome": "Torna alla home"
+      },
+      "login": {
+        "email": "Inserisci Email",
+        "password": "Inserisci Password",
+        "submit": "Login"
+      }
+    }
+  }
+}
