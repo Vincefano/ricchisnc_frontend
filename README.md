@@ -4,6 +4,13 @@
 npm install
 ```
 
+### Build the project
+
+```bash
+npm run build
+```
+
+
 ### Start the project
 
 ```bash
