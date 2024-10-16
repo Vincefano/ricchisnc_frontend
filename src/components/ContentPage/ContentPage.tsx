@@ -4,6 +4,7 @@ import { PAGES } from "../../constants/pages";
 import { DashboardPage } from "../../pages/DashboardPage";
 import { currentPageSelector } from "../../redux/wrapperPage";
 
+/** Content for the wrapper based on the current page, stored on Redux store*/
 export const ContentPage: FC = () => {
   const { dashboardPage, website, storePage, loginPage } = PAGES;
   const currentPage = useSelector(currentPageSelector);

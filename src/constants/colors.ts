@@ -1,3 +1,4 @@
+/** All the colors used in the application */
 export const COLORS = {
   primary: "#754d6b",
   secondary: "#e8e8e8",

@@ -15,6 +15,7 @@ import { ContentPage } from "./components/ContentPage";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./translations/i18n.ts";
 import { LoginPage } from "./pages/Login/LoginPage.tsx";
+import { INFO } from "./constants/info.ts";
 
 const App = () => {
   const navigate = useNavigate();
@@ -22,6 +23,7 @@ const App = () => {
 
   //TODO: handle token management
   const isLogged = true;
+  const { companyName, publicLogoPath } = INFO;
 
   useLayoutEffect(() => {
     if (isLogged) {
@@ -47,8 +49,8 @@ const App = () => {
                 width: 180,
               }}
               variant="square"
-              alt="RICCHI S.N.C."
-              src="/logo.png"
+              alt={companyName}
+              src={publicLogoPath}
             />
           ),
           title: "",

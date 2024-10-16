@@ -1,3 +1,4 @@
+/** All pages of the application */
 export const PAGES = {
   loginPage: "/login",
   dashboardPage: "/dashboard",
