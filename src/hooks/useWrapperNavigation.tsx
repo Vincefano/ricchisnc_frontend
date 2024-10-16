@@ -1,6 +1,13 @@
 import { useTranslation } from "react-i18next";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import { Computer, Logout, Store } from "@mui/icons-material";
+import {
+  Book,
+  CalendarMonth,
+  Category,
+  Computer,
+  Logout,
+  PostAdd,
+  Warehouse,
+} from "@mui/icons-material";
 
 /** Hook to handle sidebar labels and structure using Toolpad */
 export const useWrapperNavigation = () => {
@@ -9,28 +16,50 @@ export const useWrapperNavigation = () => {
   return [
     {
       kind: "header",
-      title: t("sidebar.sections.applications.title"),
+      title: t("sidebar.sections.rental.title"),
+    },
+    {
+      segment: "estimate",
+      title: t("sidebar.sections.rental.elements.estimate"),
+      icon: <PostAdd />,
+    },
+    {
+      segment: "planner",
+      title: t("sidebar.sections.rental.elements.planner"),
+      icon: <Book />,
     },
     {
       segment: "dashboard",
-      title: t("sidebar.sections.applications.elements.dashboard"),
-      icon: <DashboardIcon />,
-    },
-    {
-      segment: "store",
-      title: t("sidebar.sections.applications.elements.store"),
-      icon: <Store />,
+      title: t("sidebar.sections.rental.elements.calendar"),
+      icon: <CalendarMonth />,
     },
     {
       kind: "divider",
     },
     {
       kind: "header",
-      title: t("sidebar.sections.applications.externalLink.title"),
+      title: t("sidebar.sections.warehouse.title"),
     },
     {
-      segment: "website",
-      title: t("sidebar.sections.applications.externalLink.website"),
+      segment: "items",
+      title: t("sidebar.sections.warehouse.elements.items"),
+      icon: <Category />,
+    },
+    {
+      segment: "edposit",
+      title: t("sidebar.sections.warehouse.elements.deposit"),
+      icon: <Warehouse />,
+    },
+    {
+      kind: "divider",
+    },
+    {
+      kind: "header",
+      title: t("sidebar.sections.externalLink.title"),
+    },
+    {
+      segment: "logout",
+      title: t("sidebar.sections.externalLink.elements.website"),
       icon: <Computer />,
     },
     {
@@ -43,7 +72,7 @@ export const useWrapperNavigation = () => {
     {
       segment: "logout",
       title: t("sidebar.sections.account.elements.logout"),
-      icon: <Logout />,
+      icon: <Logout sx={{ transform: "rotate(180deg)" }} />,
     },
   ];
 };

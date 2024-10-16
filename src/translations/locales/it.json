@@ -2,21 +2,35 @@
   "translation": {
     "sidebar": {
       "sections": {
-        "applications": {
-          "title": "Applicazioni",
+        "rental": {
+          "title": "Noleggio",
           "elements": {
-            "dashboard": "Dashboard",
-            "store": "Magazzino"
+            "calendar": "Calendario",
+            "planner": "Agenda",
+            "estimate": "Preventivo"
           },
           "externalLink": {
             "title": "Link Esterni",
             "website": "Sito Web"
           }
         },
-        "account": {
-          "title": "Account",
+        "warehouse": {
+          "title": "Magazzino",
           "elements": {
-            "logout": "Logout"
+            "items": "Articoli",
+            "deposit": "Deposito"
+          }
+        },
+        "externalLink": {
+          "title": "Link Esterni",
+          "elements": {
+            "website": "Sito Web"
+          }
+        },
+        "account": {
+          "title": "Sessione",
+          "elements": {
+            "logout": "Esci"
           }
         }
       }
