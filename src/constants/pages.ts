@@ -1,4 +1,7 @@
 export const PAGES = {
   loginPage: "/login",
-  dashboardPage: "/home",
+  dashboardPage: "/dashboard",
+  storePage: "/store",
+  website: "/website",
+  notFoundPage: "/not-found",
 };

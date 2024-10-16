@@ -1,5 +1,23 @@
 {
   "translation": {
+    "sidebar": {
+      "sections": {
+        "applications": {
+          "title": "Applicazioni",
+          "elements": {
+            "dashboard": "Dashboard",
+            "store": "Magazzino",
+            "website": "Sito Web"
+          }
+        },
+        "account": {
+          "title": "Account",
+          "elements": {
+            "logout": "Logout"
+          }
+        }
+      }
+    },
     "pages": {
       "notFound": {
         "title": "Pagina non trovata",

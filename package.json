@@ -16,6 +16,7 @@
     "@mui/icons-material": "^6.1.4",
     "@mui/material": "^6.1.4",
     "@reduxjs/toolkit": "^2.3.0",
+    "@toolpad/core": "^0.7.0",
     "dayjs": "^1.11.13",
     "i18next": "^23.16.0",
     "jwt-decode": "^4.0.0",
