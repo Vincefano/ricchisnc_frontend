@@ -6,7 +6,10 @@
           "title": "Applicazioni",
           "elements": {
             "dashboard": "Dashboard",
-            "store": "Magazzino",
+            "store": "Magazzino"
+          },
+          "externalLink": {
+            "title": "Link Esterni",
             "website": "Sito Web"
           }
         },

@@ -14,14 +14,22 @@ import { PAGES } from "./constants/pages";
 import { ContentPage } from "./components/ContentPage";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./translations/i18n.ts";
+import { LoginPage } from "./pages/Login/LoginPage.tsx";
 
 const App = () => {
   const navigate = useNavigate();
   const [pathName, setPathName] = useState(PAGES.dashboardPage);
 
+  //TODO: handle token management
+  const isLogged = true;
+
   useLayoutEffect(() => {
-    navigate(pathName);
-  }, [navigate, pathName]);
+    if (isLogged) {
+      navigate(pathName);
+    } else {
+      navigate(PAGES.loginPage);
+    }
+  }, [isLogged, navigate, pathName]);
 
   /** Handler for both Routes and Sidebar handling */
   const handleRouter = useWrapperRouter({ pathName, setPathName });
@@ -46,12 +54,16 @@ const App = () => {
           title: "",
         }}
       >
-        <Box className="App">
-          <DashboardLayout>
-            <PageContainer>
-              <ContentPage />
-            </PageContainer>
-          </DashboardLayout>
+        <Box>
+          {isLogged ? (
+            <DashboardLayout>
+              <PageContainer>
+                <ContentPage />
+              </PageContainer>
+            </DashboardLayout>
+          ) : (
+            <LoginPage />
+          )}
         </Box>
       </AppProvider>
     </I18nextProvider>

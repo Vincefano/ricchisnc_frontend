@@ -22,8 +22,15 @@ export const useWrapperNavigation = () => {
       icon: <Store />,
     },
     {
+      kind: "divider",
+    },
+    {
+      kind: "header",
+      title: t("sidebar.sections.applications.externalLink.title"),
+    },
+    {
       segment: "website",
-      title: t("sidebar.sections.applications.elements.website"),
+      title: t("sidebar.sections.applications.externalLink.website"),
       icon: <Computer />,
     },
     {
