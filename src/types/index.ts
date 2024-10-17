@@ -1,4 +1,4 @@
 export type ReduxStore = {
   wrapperPage: { currentPage: string };
-  loginData: unknown;
+  loginError: { error: { value: string; label: string; isError: boolean } };
 };

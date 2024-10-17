@@ -4,5 +4,6 @@ export const PAGES = {
   dashboardPage: "/dashboard",
   storePage: "/store",
   website: "/website",
+  logout: "/logout",
   notFoundPage: "/not-found",
 };

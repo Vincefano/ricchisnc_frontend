@@ -21,8 +21,7 @@ const App = () => {
   const navigate = useNavigate();
   const [pathName, setPathName] = useState(PAGES.dashboardPage);
 
-  //TODO: handle token management
-  const isLogged = true;
+  const isLogged = !!localStorage.getItem("authToken");
   const { companyName, publicLogoPath } = INFO;
 
   useLayoutEffect(() => {
@@ -46,7 +45,8 @@ const App = () => {
           logo: (
             <Avatar
               sx={{
-                width: 180,
+                width: 150,
+                p: 1,
               }}
               variant="square"
               alt={companyName}

@@ -1,146 +1,165 @@
-import React, { useRef, useState } from "react";
-import { TextField, Box, Button, Avatar } from "@mui/material";
+import React, { useState, useCallback } from "react";
+import {
+  TextField,
+  Box,
+  Button,
+  Avatar,
+  Typography,
+  CircularProgress,
+} from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import Background from "../../assets/bg_signin.png";
+import { Login } from "@mui/icons-material";
+import { login } from "../../utils/login/login";
+import { useDispatch } from "react-redux";
 
 export const LoginPage = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
+  const [isLoading, setLoading] = useState<boolean>(false);
   const [credentials, setCredentials] = useState({
-    email: { value: "", error: false },
-    password: { value: "", error: false },
+    username: "",
+    password: "",
+    usernameError: false,
   });
 
-  const FORM = useRef(null);
-  const navigate = useNavigate();
+  /** Validation rules for username */
+  const validateUsername = useCallback((username: string) => {
+    return username.length > 2;
+  }, []);
 
-  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    alert("SUCA");
-  };
+  /** Handle input change. It fills the state with the new value */
+  const onInputChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = event.target;
 
-  const onInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setCredentials({
-      ...credentials,
-      [name]: { value, error: false },
-    });
-  };
+      setCredentials((prev) => ({
+        ...prev,
+        [name]: value,
+        usernameError: name === "username" ? false : prev.usernameError,
+      }));
+    },
+    []
+  );
 
-  const isSubmitDisabled =
-    credentials.email.value === "" || credentials.password.value === "";
+  /** Handle blur event. It checks if the username is valid */
+  const onBlurCheck = useCallback(
+    (event: React.FocusEvent<HTMLInputElement>) => {
+      const { name, value } = event.target;
+
+      if (name === "username") {
+        setCredentials((prev) => ({
+          ...prev,
+          usernameError: !validateUsername(value),
+        }));
+      }
+    },
+    [validateUsername]
+  );
+
+  /** Submit handler */
+  const onSubmit = useCallback(
+    (event: React.FormEvent<HTMLFormElement>) => {
+      event.preventDefault();
+      console.log("Form submitted");
+      const { username, password, usernameError } = credentials;
+
+      if (usernameError || !validateUsername(username) || !password) {
+        console.log("Form validated");
+
+        setCredentials((prev) => ({
+          ...prev,
+          usernameError: !validateUsername(username),
+        }));
+      }
+
+      login(username, password, navigate, dispatch, setLoading);
+    },
+    [credentials, dispatch, navigate, validateUsername]
+  );
 
   return (
-    <Box>
+    <Box
+      sx={{
+        width: "100%",
+        height: "calc(100vh - 65px)",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <Box
         sx={{
-          width: "100%",
-          height: "calc(100vh - 65px)",
+          width: 600,
+          background: "white",
+          padding: 7,
+          borderRadius: 2,
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
         }}
       >
         <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            alignContent: "center",
-            height: "100%",
-            alignItems: "center",
-          }}
+          mb={5}
+          display="flex"
+          flexDirection="column"
+          alignItems="flex-start"
         >
-          <Box
-            sx={{
-              display: "flex",
-              justifyContent: "center",
-              alignContent: "center",
-              alignItems: "center",
-              borderRadius: "1% 0 0 1%",
-              overflow: "hidden",
-            }}
-          >
-            <Box
-              sx={{
-                width: 600,
-                height: 600,
-                background: "white",
-                p: 5,
-              }}
-            >
-              <Box m={5} mb={9} textAlign="center">
-                <Avatar
-                  sx={{
-                    width: "60%",
-                    height: "100%",
-                    display: "flex",
-                    justifyContent: "center",
-                  }}
-                  variant="square"
-                  alt="RICCHI S.N.C."
-                  src="/logo.png"
-                />
-              </Box>
-              <Box
-                component="form"
-                ref={FORM}
-                onSubmit={onSubmit}
-                height="100%"
-                display="flex"
-                justifyContent="center"
-              >
-                <Box>
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="email"
-                    label={t("pages.login.email")}
-                    name="email"
-                    autoComplete="email"
-                    autoFocus
-                    error={credentials.email.error}
-                    onChange={onInputChange}
-                    sx={{ mb: 2 }}
-                  />
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="password"
-                    onChange={onInputChange}
-                    label={t("pages.login.password")}
-                    type="password"
-                    id="password"
-                    autoComplete="current-password"
-                  />
-
-                  <Box display="flex" justifyContent="center" width="100%">
-                    <Button
-                      type="submit"
-                      fullWidth
-                      variant="contained"
-                      disabled={isSubmitDisabled}
-                      sx={{ mt: 3, mb: 2, maxWidth: 100, height: 50 }}
-                    >
-                      {t("pages.login.submit")}
-                    </Button>
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-          <Box
-            sx={{
-              width: 400,
-              height: 600,
-              backgroundImage: `url(${Background})`,
-              backgroundSize: "cover",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-              p: 5,
-              borderRadius: "0 1% 1% 0",
-              overflow: "hidden",
-            }}
+          <Avatar
+            sx={{ width: 270, height: "auto" }}
+            imgProps={{ draggable: false }}
+            variant="square"
+            alt="RICCHI S.N.C."
+            src="/logo.png"
           />
+          <Typography variant="h6" gutterBottom>
+            Resources Manager
+          </Typography>
+        </Box>
+        <Box component="form" onSubmit={onSubmit}>
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            id="username"
+            label={t("pages.login.username")}
+            name="username"
+            autoComplete="username"
+            autoFocus
+            error={credentials.usernameError}
+            helperText={
+              credentials.usernameError && t("pages.login.usernameError")
+            }
+            onChange={onInputChange}
+            onBlur={onBlurCheck}
+            sx={{ mb: 2 }}
+          />
+          <TextField
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label={t("pages.login.password")}
+            type="password"
+            id="password"
+            autoComplete="off"
+            onChange={onInputChange}
+          />
+          <Box display="flex" justifyContent="flex-end" width="100%">
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2, maxWidth: 280, height: 50 }}
+            >
+              {t("pages.login.submit")}
+              {isLoading ? (
+                <CircularProgress sx={{ ml: 2, color: "white" }} size={20} />
+              ) : (
+                <Login sx={{ ml: 1 }} />
+              )}
+            </Button>
+          </Box>
         </Box>
       </Box>
     </Box>

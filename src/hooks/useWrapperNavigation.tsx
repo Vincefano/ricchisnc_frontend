@@ -46,7 +46,7 @@ export const useWrapperNavigation = () => {
       icon: <Category />,
     },
     {
-      segment: "edposit",
+      segment: "deposit",
       title: t("sidebar.sections.warehouse.elements.deposit"),
       icon: <Warehouse />,
     },
@@ -58,7 +58,7 @@ export const useWrapperNavigation = () => {
       title: t("sidebar.sections.externalLink.title"),
     },
     {
-      segment: "logout",
+      segment: "website",
       title: t("sidebar.sections.externalLink.elements.website"),
       icon: <Computer />,
     },

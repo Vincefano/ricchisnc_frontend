@@ -42,9 +42,10 @@
         "backToHome": "Torna alla home"
       },
       "login": {
-        "email": "Inserisci Email",
+        "username": "Inserisci Username",
         "password": "Inserisci Password",
-        "submit": "Login"
+        "submit": "Entra nell'applicazione",
+        "emailError": "Inserisci un'email valida"
       }
     }
   }
