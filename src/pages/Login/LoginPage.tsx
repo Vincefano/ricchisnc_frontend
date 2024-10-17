@@ -27,7 +27,7 @@ export const LoginPage = () => {
 
   /** Validation rules for username */
   const validateUsername = useCallback((username: string) => {
-    return username.length > 2;
+    return username.length === 0 || username.length > 2;
   }, []);
 
   /** Handle input change. It fills the state with the new value */
@@ -44,36 +44,16 @@ export const LoginPage = () => {
     []
   );
 
-  /** Handle blur event. It checks if the username is valid */
-  const onBlurCheck = useCallback(
-    (event: React.FocusEvent<HTMLInputElement>) => {
-      const { name, value } = event.target;
-
-      if (name === "username") {
-        setCredentials((prev) => ({
-          ...prev,
-          usernameError: !validateUsername(value),
-        }));
-      }
-    },
-    [validateUsername]
-  );
-
   /** Submit handler */
   const onSubmit = useCallback(
     (event: React.FormEvent<HTMLFormElement>) => {
       event.preventDefault();
-      console.log("Form submitted");
-      const { username, password, usernameError } = credentials;
+      const { username, password } = credentials;
 
-      if (usernameError || !validateUsername(username) || !password) {
-        console.log("Form validated");
-
-        setCredentials((prev) => ({
-          ...prev,
-          usernameError: !validateUsername(username),
-        }));
-      }
+      setCredentials((prev) => ({
+        ...prev,
+        usernameError: !validateUsername(username),
+      }));
 
       login(username, password, navigate, dispatch, setLoading);
     },
@@ -131,7 +111,6 @@ export const LoginPage = () => {
               credentials.usernameError && t("pages.login.usernameError")
             }
             onChange={onInputChange}
-            onBlur={onBlurCheck}
             sx={{ mb: 2 }}
           />
           <TextField

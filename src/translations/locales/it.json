@@ -45,7 +45,7 @@
         "username": "Inserisci Username",
         "password": "Inserisci Password",
         "submit": "Entra nell'applicazione",
-        "emailError": "Inserisci un'email valida"
+        "usernameError": "Inserisci uno username valido"
       }
     }
   }
