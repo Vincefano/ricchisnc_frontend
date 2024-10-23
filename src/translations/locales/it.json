@@ -6,8 +6,8 @@
           "title": "Noleggio",
           "elements": {
             "calendar": "Calendario",
-            "fleet": "Flotta",
-            "estimate": "Preventivo"
+            "fleet": "Parco Veicoli",
+            "estimate": "Preventivi"
           },
           "externalLink": {
             "title": "Link Esterni",
@@ -46,6 +46,15 @@
         "password": "Inserisci Password",
         "submit": "Entra nell'applicazione",
         "usernameError": "Inserisci uno username valido"
+      },
+      "fleet": {
+        "vehicle": {
+          "status": {
+            "busy": "Occupata",
+            "free": "Libera",
+            "maintenance": "In Manutenzione"
+          }
+        }
       }
     }
   }

@@ -1,7 +1,7 @@
 import { Box, Button, Typography } from "@mui/material";
 import { Add, CarRepair } from "@mui/icons-material";
 import { MOCK_DATA } from "./MOCK_DATA";
-import { Vehicle } from "./Vehicle";
+import { Vehicle, VehicleProp } from "./Vehicle";
 import { useState } from "react";
 
 export const FleetPage = () => {
@@ -78,6 +78,7 @@ export const FleetPage = () => {
                   vehicle={vehicle}
                   isSelected={selectedElement === vehicle.id}
                   setSelected={setSelectedElement}
+                  status={vehicle.status}
                 />
               ))}
             </Box>

@@ -1,11 +1,11 @@
-import { Box, Button, Typography } from "@mui/material";
-import { Add, CalendarMonth } from "@mui/icons-material";
-import { DashboardScheduler } from "./DashboardScheduer";
+import { Box, Typography } from "@mui/material";
+import { CalendarMonth } from "@mui/icons-material";
+import { DashboardScheduler } from "./DashboardScheduler";
 
 export const DashboardPage = () => {
   return (
     <Box width="100%" display="flex" flexDirection="column" gap={2}>
-      <Box sx={{ height: "100%", width: "100%" }} pb={2}>
+      {/* <Box sx={{ height: "100%", width: "100%" }} pb={2}>
         <Box
           sx={{
             width: "100%",
@@ -22,7 +22,7 @@ export const DashboardPage = () => {
             <Add sx={{ ml: 1 }} />
           </Button>
         </Box>
-      </Box>
+      </Box> */}
       <Box
         sx={{
           bgcolor: "white",

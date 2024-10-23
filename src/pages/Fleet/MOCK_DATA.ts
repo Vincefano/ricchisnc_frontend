@@ -1,4 +1,6 @@
-export const MOCK_DATA = [
+import { VehicleProp } from "./Vehicle";
+
+export const MOCK_DATA: VehicleProp[] = [
   { id: 1, brand: "Opel", model: "Corsa", plate: "AA111AA", status: "free" },
   { id: 2, brand: "Ford", model: "Focus", plate: "BB222BB", status: "busy" },
   { id: 3, brand: "Toyota", model: "Yaris", plate: "CC333CC", status: "free" },
@@ -61,4 +63,5 @@ export const MOCK_DATA = [
   },
   { id: 19, brand: "Skoda", model: "Fabia", plate: "SS999SS", status: "free" },
   { id: 20, brand: "Mini", model: "Cooper", plate: "TT000TT", status: "busy" },
+  { id: 21, brand: "Tesla", model: "S", plate: "UU111UU", status: "free" },
 ];

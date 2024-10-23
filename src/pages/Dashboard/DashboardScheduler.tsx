@@ -4,12 +4,12 @@ import "dayjs/locale/it"; // Importa la lingua italiana
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import { ToolbarProps } from "react-big-calendar"; // Importa il componente Toolbar
 import { COLORS } from "../../constants/colors";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Tooltip } from "@mui/material";
 import {
   CalendarMonth,
-  CalendarViewDay,
   ChevronLeft,
   ChevronRight,
+  Class,
   Today,
 } from "@mui/icons-material";
 
@@ -34,11 +34,36 @@ const messages = {
   showMore: (total: string) => `+ altri ${total}`,
 };
 
-const eventStyleGetter = (event, start, end, isSelected) => {
+const events = [
+  {
+    start: new Date("2024-10-12"),
+    end: new Date("2024-10-25"),
+    title: "Mercedes A-Class - AA000AA",
+  },
+  {
+    start: new Date("2024-10-22"),
+    end: new Date("2024-10-30"),
+    title: "Opel Corsa - BB000BB",
+  },
+  { start: new Date(), end: new Date(), title: "Renault Clio - DD000DD" },
+  {
+    start: new Date("2024-11-01"),
+    end: new Date("2024-11-04"),
+    title: "Renault Clio - CC000CC",
+  },
+];
+
+const eventStyleGetter = (event) => {
   let backgroundColor = "";
 
   // Cambia il colore in base al titolo dell'evento (modello auto)
   switch (event.title) {
+    // case "Opel Corsa":
+    //   backgroundColor = COLORS.error;
+    //   break;
+    // case "Renault Clio":
+    //   backgroundColor = COLORS.info;
+    //   break;
     default:
       backgroundColor = COLORS.primary;
   }
@@ -61,50 +86,58 @@ const eventStyleGetter = (event, start, end, isSelected) => {
 const CustomToolbar = (toolbar: ToolbarProps) => {
   return (
     <div className="rbc-toolbar">
-      {/* Cambia l'ordine dei bottoni */}
       <Box className="rbc-btn-group">
-        <Button
-          variant="text"
-          onClick={() => toolbar.onNavigate("PREV")}
-          size="small"
-        >
-          <ChevronLeft fontSize="small" />
-        </Button>
-        <Button
-          size="small"
-          variant="text"
-          onClick={() => toolbar.onNavigate("TODAY")}
-        >
-          <Today fontSize="small" />
-        </Button>
-        <Button
-          size="small"
-          variant="text"
-          onClick={() => toolbar.onNavigate("NEXT")}
-        >
-          <ChevronRight fontSize="small" />
-        </Button>
+        <Tooltip title="Mese Precedente" placement="top" arrow>
+          <Button
+            variant="text"
+            onClick={() => toolbar.onNavigate("PREV")}
+            size="small"
+          >
+            <ChevronLeft fontSize="small" />
+          </Button>
+        </Tooltip>
+        <Tooltip title="Mese Corrente" placement="top" arrow>
+          <Button
+            size="small"
+            variant="text"
+            onClick={() => toolbar.onNavigate("TODAY")}
+          >
+            <Today fontSize="small" />
+          </Button>
+        </Tooltip>
+        <Tooltip title="Mese Successivo" placement="top" arrow>
+          <Button
+            size="small"
+            variant="text"
+            onClick={() => toolbar.onNavigate("NEXT")}
+          >
+            <ChevronRight fontSize="small" />
+          </Button>
+        </Tooltip>
       </Box>
 
       <span className="rbc-toolbar-label">{toolbar.label}</span>
 
       {/* Bottoni di visualizzazione */}
       <Box className="rbc-btn-group">
-        <Button
-          size="small"
-          variant="text"
-          onClick={() => toolbar.onView("month")}
-        >
-          <CalendarMonth fontSize="small" />
-        </Button>
-
-        <Button
-          size="small"
-          variant="text"
-          onClick={() => toolbar.onView("day")}
-        >
-          <CalendarViewDay fontSize="small" />
-        </Button>
+        <Tooltip title="Calendario" placement="top" arrow>
+          <Button
+            size="small"
+            variant="text"
+            onClick={() => toolbar.onView("month")}
+          >
+            <CalendarMonth fontSize="small" />
+          </Button>
+        </Tooltip>
+        <Tooltip title="Agenda" placement="top" arrow>
+          <Button
+            size="small"
+            variant="text"
+            onClick={() => toolbar.onView("day")}
+          >
+            <Class fontSize="small" />
+          </Button>
+        </Tooltip>
       </Box>
     </div>
   );
@@ -116,20 +149,8 @@ export const DashboardScheduler = () => (
     startAccessor="start"
     endAccessor="end"
     onDoubleClickEvent={(event) => alert(event.title)}
-    events={[
-      {
-        start: new Date("2024-10-12"),
-        end: new Date("2024-10-25"),
-        title: "Mercedes A-Class",
-      },
-      {
-        start: new Date("2024-10-22"),
-        end: new Date("2024-10-30"),
-        title: "Opel Corsa",
-      },
-      { start: new Date(), end: new Date(), title: "Renault Clio" },
-    ]}
-    style={{ height: 800 }}
+    events={events}
+    style={{ height: 1000 }}
     defaultView="month"
     culture="it"
     messages={{
