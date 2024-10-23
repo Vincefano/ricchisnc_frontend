@@ -1,5 +1,6 @@
 import { Avatar } from "@mui/material";
 import * as BrandSvgs from "../../assets/brand_svgs";
+import { convertStringToPascalCase } from "../../utils/convertStringToPascalCase";
 
 type Props = {
   size: "xs" | "s" | "m" | "l" | "xl";
@@ -24,7 +25,7 @@ export const CarBrandLogo = ({ size, name }: Props) => {
         draggable: false,
       }}
       alt={`${name} logo`}
-      src={BrandSvgs[name]}
+      src={BrandSvgs[convertStringToPascalCase(name) as keyof typeof BrandSvgs]}
       sx={{ width: SIZE_MAPPING[size], height: "auto" }}
       draggable={false}
     />

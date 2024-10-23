@@ -6,7 +6,7 @@
           "title": "Noleggio",
           "elements": {
             "calendar": "Calendario",
-            "planner": "Agenda",
+            "fleet": "Flotta",
             "estimate": "Preventivo"
           },
           "externalLink": {

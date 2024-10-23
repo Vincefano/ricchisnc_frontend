@@ -1,3 +1,5 @@
+@import "react-big-calendar/lib/sass/styles";
+
 body,
 html {
   text-rendering: optimizeLegibility;
@@ -5,4 +7,10 @@ html {
   padding: 0;
   border: 0;
   background: #e8e8e8;
+}
+
+.MuiTableSortLabel-iconDirectionAsc {
+  visibility: visible !important;
+  display: block !important;
+  opacity: 0.1 !important;
 }

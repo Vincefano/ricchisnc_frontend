@@ -21,7 +21,7 @@ const App = () => {
   const navigate = useNavigate();
   const [pathName, setPathName] = useState(PAGES.dashboardPage);
 
-  const isLogged = !!localStorage.getItem("authToken");
+  const isLogged = true;
   const { companyName, publicLogoPath } = INFO;
 
   useLayoutEffect(() => {
@@ -59,7 +59,7 @@ const App = () => {
         <Box>
           {isLogged ? (
             <DashboardLayout>
-              <PageContainer>
+              <PageContainer title="" breadCrumbs={[]}>
                 <ContentPage />
               </PageContainer>
             </DashboardLayout>

@@ -7,4 +7,5 @@ export const COLORS = {
   warning: "#ffc665",
   info: "#4d73a1",
   success: "#39aa90",
+  shade: "rgba(0,0,0,0.1)",
 };

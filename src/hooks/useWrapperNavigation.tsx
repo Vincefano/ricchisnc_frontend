@@ -2,6 +2,7 @@ import { useTranslation } from "react-i18next";
 import {
   Book,
   CalendarMonth,
+  CarRental,
   Category,
   Computer,
   Logout,
@@ -19,19 +20,19 @@ export const useWrapperNavigation = () => {
       title: t("sidebar.sections.rental.title"),
     },
     {
+      segment: "dashboard",
+      title: t("sidebar.sections.rental.elements.calendar"),
+      icon: <CalendarMonth />,
+    },
+    {
       segment: "estimate",
       title: t("sidebar.sections.rental.elements.estimate"),
       icon: <PostAdd />,
     },
     {
-      segment: "planner",
-      title: t("sidebar.sections.rental.elements.planner"),
-      icon: <Book />,
-    },
-    {
-      segment: "dashboard",
-      title: t("sidebar.sections.rental.elements.calendar"),
-      icon: <CalendarMonth />,
+      segment: "fleet",
+      title: t("sidebar.sections.rental.elements.fleet"),
+      icon: <CarRental />,
     },
     {
       kind: "divider",

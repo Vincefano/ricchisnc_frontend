@@ -1,0 +1,1 @@
+export { convertStringToPascalCase } from "./convertStringToPascalCase";

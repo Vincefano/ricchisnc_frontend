@@ -6,4 +6,6 @@ export const PAGES = {
   website: "/website",
   logout: "/logout",
   notFoundPage: "/not-found",
+  estimatePage: "/estimate",
+  fleetPage: "/fleet",
 };
