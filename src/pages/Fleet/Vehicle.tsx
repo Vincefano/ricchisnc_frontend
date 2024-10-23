@@ -48,7 +48,7 @@ export const Vehicle: FC<Props> = ({ vehicle, setSelected, isSelected }) => {
         borderRadius: 2,
       }}
       onClick={handleClick}
-      onDoubleClick={() => alert("Apre il preventivo N. " + id)}
+      onDoubleClick={() => alert("Hai selezionato " + brand + " " + model)}
     >
       <CarBrandLogo size="s" name={brand as keyof typeof BrandSvgs} />
       <Typography
